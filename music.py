@@ -7,17 +7,17 @@ canvas = tk.Tk()
 canvas.title("Ms Music Player")
 canvas.geometry("400x500")
 canvas.config(bg= 'black')
-rootpath = "C:\\Users\MONU\Desktop\music file"
+rootpath = "C:\\Users\MONU\Desktop\music file" //paste your music file path in this line
 pattern = "*.mp3"
 
 mixer.init()
-
+//BUTTON image line 
 prev_img = tk.PhotoImage(file = "previous.png")
 start_img = tk.PhotoImage(file = "start.png")
 pause_img = tk.PhotoImage(file = "pause-squared.png")
 naxt_img = tk.PhotoImage(file = "next.png")
 
-def select():
+def select(): 
     label.config(text= listBox.get("anchor"))
     mixer.music.load(rootpath + "\\" + listBox.get("anchor"))
     mixer.music.play()
@@ -75,7 +75,7 @@ pauseButton.pack(pady=15, in_ = top, side = "left")
 nextButton = tk.Button(canvas, text="Next", image= naxt_img, bg="black", borderwidth= 0, command=  play_next)
 nextButton.pack(pady=15, in_ = top, side = "left")
 
-for root, dirs, files in os.walk(rootpath):
+for root, dirs, files in os.walk(rootpath): 
     for filename in fnmatch.filter(files, pattern):
         listBox.insert("end", filename)
 canvas.mainloop()
