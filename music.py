@@ -4,29 +4,29 @@ import os
 from pygame import mixer
 
 canvas = tk.Tk()
-canvas.title("Ms Music Player")
-canvas.geometry("400x500")
-canvas.config(bg= 'black')
-rootpath = "C:\\Users\MONU\Desktop\music file" //paste your music file path in this line
-pattern = "*.mp3"
+canvas.title("Ms Music Player") #application name
+canvas.geometry("400x500") # application output screen size
+canvas.config(bg= 'black') # output background color of screen
+rootpath = "C:\\Users\MONU\Desktop\music file" #paste your music file path in this line
+pattern = "*.mp3" #play mp3 music 
 
 mixer.init()
-//BUTTON image line 
+#BUTTON image line 
 prev_img = tk.PhotoImage(file = "previous.png")
 start_img = tk.PhotoImage(file = "start.png")
 pause_img = tk.PhotoImage(file = "pause-squared.png")
 naxt_img = tk.PhotoImage(file = "next.png")
 
-def select(): 
+def select(): # play music  
     label.config(text= listBox.get("anchor"))
     mixer.music.load(rootpath + "\\" + listBox.get("anchor"))
     mixer.music.play()
 
-def stop():
+def stop(): #stop music
     mixer.music.stop()
     listBox.select_clear('active')
     
-def play_next():
+def play_next(): #play next music
     next_song = listBox.curselection()
     next_song = next_song[0] + 1
     next_song_name = listBox.get(next_song)
@@ -39,7 +39,7 @@ def play_next():
     listBox.activate(next_song)
     listBox.select_set(next_song)
 
-def play_prev():
+def play_prev(): #play previous music
     prev_song = listBox.curselection()
     prev_song = prev_song[0] - 1
     prev_song_name = listBox.get(prev_song)
@@ -54,7 +54,7 @@ def play_prev():
     
     
     
-listBox = tk.Listbox(canvas, fg= "cyan", bg="black", width= 100, font = ("poppins", 14))
+listBox = tk.Listbox(canvas, fg= "cyan", bg="black", width= 100, font = ("poppins", 14)) 
 listBox.pack(padx=15, pady=15)
 
 label = tk.Label(canvas, text = "", bg="black", fg="yellow", font=('poppins', 18))
@@ -75,7 +75,8 @@ pauseButton.pack(pady=15, in_ = top, side = "left")
 nextButton = tk.Button(canvas, text="Next", image= naxt_img, bg="black", borderwidth= 0, command=  play_next)
 nextButton.pack(pady=15, in_ = top, side = "left")
 
-for root, dirs, files in os.walk(rootpath): 
+for root, dirs, files in os.walk(rootpath): # find the directories your given music file in your pc
+
     for filename in fnmatch.filter(files, pattern):
         listBox.insert("end", filename)
 canvas.mainloop()
