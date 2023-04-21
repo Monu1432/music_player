@@ -1,9 +1,9 @@
-import tkinter as tk  #create your Gui using tkinter
-import fnmatch
-import os
-from pygame import mixer
+import tkinter as tk  #create your Gui using tkinter.
+import fnmatch #unix filename pattern matching.
+import os # os for interacting wih the operating system .
+from pygame import mixer #in order to play music/audio files in pygame, pygame.mixer is used.
 
-ms = tk.Tk()
+ms = tk.Tk() #create windown screen
 ms.title("Ms Music Player") #application name
 ms.geometry("400x500") # application output screen size
 ms.config(bg= 'black') # output background color of screen
